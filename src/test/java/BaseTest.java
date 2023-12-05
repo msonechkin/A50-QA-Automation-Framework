@@ -11,8 +11,8 @@ import org.testng.annotations.BeforeSuite;
 import java.time.Duration;
 
 public class BaseTest {
-    WebDriver driver;
-    String url = "https://qa.koel.app/";
+    private WebDriver driver;
+    protected String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
@@ -33,25 +33,20 @@ public class BaseTest {
 
     public WebDriver getDriver() {
         return driver;
-    }
+   }
 
     @AfterMethod
     public void closeDriver() {
-        getDriver().quit();
+        driver.quit();
     }
 
-    public void enterEmail(String email) {
-        WebElement emailField = driver.findElement(By.xpath("//input[@type='email']"));
+    public void logIn(String email, String password) {
+        WebElement emailField = getDriver().findElement(By.xpath("//input[@type='email']"));
         emailField.sendKeys(email);
-    }
-
-    public void enterPassword(String password) {
-        WebElement emailField = driver.findElement(By.xpath("//input[@type='password']"));
-        emailField.sendKeys(password);
-    }
-
-    public void clickLogInButton() {
-        WebElement logInButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        WebElement passwordField = getDriver().findElement(By.xpath("//input[@type='password']"));
+        passwordField.sendKeys(password);
+        WebElement logInButton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         logInButton.click();
     }
+
 }
