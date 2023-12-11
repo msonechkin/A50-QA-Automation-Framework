@@ -1,9 +1,10 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -13,6 +14,9 @@ import java.time.Duration;
 
 public class BaseTest {
     private WebDriver driver;
+    WebDriverWait wait;
+    Wait<WebDriver> fluentWait;
+
 
  @BeforeSuite
     static void setupClass() {
@@ -24,12 +28,17 @@ public class BaseTest {
     public void setUpDriverAndOpen(String BaseURL) {
         //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--remote-allow-origins=*");;
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(BaseURL);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        fluentWait = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(100));
+
     }
 
     public WebDriver getDriver() {
@@ -49,5 +58,6 @@ public class BaseTest {
         WebElement logInButton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         logInButton.click();
     }
+
 
 }
