@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 @Test
 public class HomeWork18 extends BaseTest{
     @Test
-    public void playSong() throws InterruptedException {
+    public void playSong(){
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'All Songs')]")));

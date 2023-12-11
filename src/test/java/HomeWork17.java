@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class HomeWork17 extends BaseTest {
     @Test
-    public void addSongToPlaylist() throws InterruptedException {
+    public void addSongToPlaylist() {
 
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
 
@@ -20,11 +20,17 @@ public class HomeWork17 extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(), 'Lament')]")));
         getDriver().findElement(By.xpath("//td[contains(text(), 'Lament')]")).click();
         getDriver().findElement(By.cssSelector(".btn-add-to")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'ololo')]")));
-        getDriver().findElement(By.xpath("//li[contains(text(), 'ololo')]")).click();
-        getDriver().findElement(By.xpath("//a[contains(text(), 'ololo')]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")));
 
+        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'ololo')]")));
+        getDriver().findElement(By.xpath("//li[contains(text(), 'ololo')]")).click();
+
+        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'ololo')]")));
+        WebElement button = getDriver().findElement(By.xpath("//a[contains(text(), 'ololo')]"));
+        Actions action = new Actions(getDriver());
+        action.click(button).perform();
+
+
+        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")));
         assertEquals(getDriver().findElement(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")).getText(), "Lament");
 
     }
