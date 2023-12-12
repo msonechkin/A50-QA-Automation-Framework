@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class HomeWork19 extends BaseTest {
-
+    WebElement playList;
     @Test
     public void deletePlaylist() throws InterruptedException {
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
@@ -15,7 +15,7 @@ public class HomeWork19 extends BaseTest {
         //playListName = UUID.randomUUID().toString();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), '" + playListName + "')]")));
-        WebElement playList = getDriver().findElement(By.xpath("//a[contains(text(), '" + playListName + "')]"));
+        playList = getDriver().findElement(By.xpath("//a[contains(text(), '" + playListName + "')]"));
         playList.click();
         //click on a playlist
 
@@ -27,8 +27,7 @@ public class HomeWork19 extends BaseTest {
         wait.until(ExpectedConditions.invisibilityOf(playList));
 
 
-        isVisible(playList);
-
+        Assert.assertFalse(isVisible(playList));
 
     }
 
