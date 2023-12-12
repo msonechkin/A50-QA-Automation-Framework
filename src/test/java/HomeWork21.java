@@ -20,8 +20,14 @@ public class HomeWork21 extends BaseTest{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Edit')]")));
         getDriver().findElement(By.xpath("//li[contains(text(), 'Edit')]")).click();
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@data-testid='inline-playlist-name-input']")));
         WebElement playListField = getDriver().findElement(By.xpath("//input[@data-testid='inline-playlist-name-input']"));
-        action.sendKeys(playListField,Keys.chord(Keys.CONTROL,"a")).sendKeys(Keys.BACK_SPACE).sendKeys("klghkl",Keys.ENTER);
+        action.moveToElement(playListField).sendKeys(Keys.chord(Keys.CONTROL,"a")).
+                sendKeys(Keys.BACK_SPACE).sendKeys("qwerty",Keys.ENTER).build().perform();
+        Thread.sleep(6666);
+
+
+
 
     }
 }
