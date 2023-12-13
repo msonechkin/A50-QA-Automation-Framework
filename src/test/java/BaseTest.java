@@ -18,7 +18,6 @@ import java.util.UUID;
 public class BaseTest {
     private WebDriver driver;
     WebDriverWait wait;
-    Wait<WebDriver> fluentWait;
     Actions action;
     String playListName;
 
@@ -39,11 +38,8 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(BaseURL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        fluentWait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(100));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         action = new Actions(driver);
         playListName = UUID.randomUUID().toString();
 
@@ -67,14 +63,14 @@ public class BaseTest {
         logInButton.click();
     }
     public void createPlaylist(String name){
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@title='Create a new playlist']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@title='Create a new playlist']")));
         WebElement create = getDriver().findElement(By.xpath("//i[@title='Create a new playlist']"));
         action.click(create).perform();
 
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[text()='New Playlist']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[text()='New Playlist']")));
         getDriver().findElement(By.xpath("//li[text()='New Playlist']")).click();
 
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@name='create-simple-playlist-form']/input")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@name='create-simple-playlist-form']/input")));
         getDriver().findElement(By.xpath("//form[@name='create-simple-playlist-form']/input")).sendKeys(name, Keys.ENTER);
     }
 

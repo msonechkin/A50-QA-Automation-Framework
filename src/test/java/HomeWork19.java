@@ -1,6 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -8,6 +6,7 @@ import org.testng.annotations.Test;
 
 public class HomeWork19 extends BaseTest {
     WebElement playList;
+
     @Test
     public void deletePlaylist() throws InterruptedException {
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
@@ -25,18 +24,8 @@ public class HomeWork19 extends BaseTest {
         //delete a playlist
 
         wait.until(ExpectedConditions.invisibilityOf(playList));
-
-
-        Assert.assertFalse(isVisible(playList));
+        Assert.assertEquals(getDriver().findElements(By.xpath("//a[contains(text(), '" + playListName + "')]")).size(), 0);
 
     }
 
-    public boolean isVisible(WebElement element) {
-        try {
-            element.isDisplayed();
-        } catch (StaleElementReferenceException e) {
-            return false;
-        }
-        return true;
-    }
 }

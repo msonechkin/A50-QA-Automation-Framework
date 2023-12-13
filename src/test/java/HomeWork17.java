@@ -22,16 +22,16 @@ public class HomeWork17 extends BaseTest {
         getDriver().findElement(By.xpath("//td[contains(text(), 'Lament')]")).click();
         getDriver().findElement(By.cssSelector(".btn-add-to")).click();
 
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), '" + playListName + "')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), '" + playListName + "')]")));
         getDriver().findElement(By.xpath("//li[contains(text(), '" + playListName + "')]")).click();
 
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), '" + playListName + "')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), '" + playListName + "')]")));
         WebElement button = getDriver().findElement(By.xpath("//a[contains(text(), '" + playListName + "')]"));
         Actions action = new Actions(getDriver());
         action.click(button).perform();
 
 
-        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")));
         assertEquals(getDriver().findElement(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")).getText(), "Lament");
 
     }
