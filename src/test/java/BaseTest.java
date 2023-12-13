@@ -21,8 +21,6 @@ public class BaseTest {
     Actions action;
     String playListName;
 
-
-
  @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
@@ -38,8 +36,8 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(BaseURL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         action = new Actions(driver);
         playListName = UUID.randomUUID().toString();
 

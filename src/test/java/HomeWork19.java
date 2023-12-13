@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class HomeWork19 extends BaseTest {
 
     @Test
-    public void deletePlaylist() throws InterruptedException {
+    public void deletePlaylist() {
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist(playListName);
 

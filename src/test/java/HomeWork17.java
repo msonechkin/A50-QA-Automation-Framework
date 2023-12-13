@@ -16,10 +16,13 @@ public class HomeWork17 extends BaseTest {
         logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist(playListName);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'All Songs')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'All Songs')]")));
         getDriver().findElement(By.xpath("//a[contains(text(), 'All Songs')]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(), 'Lament')]")));
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(text(), 'Lament')]")));
         getDriver().findElement(By.xpath("//td[contains(text(), 'Lament')]")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-add-to")));
         getDriver().findElement(By.cssSelector(".btn-add-to")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), '" + playListName + "')]")));
@@ -27,6 +30,7 @@ public class HomeWork17 extends BaseTest {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), '" + playListName + "')]")));
         WebElement button = getDriver().findElement(By.xpath("//a[contains(text(), '" + playListName + "')]"));
+
         Actions action = new Actions(getDriver());
         action.click(button).perform();
 
