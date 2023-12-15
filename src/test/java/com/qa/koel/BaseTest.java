@@ -1,13 +1,14 @@
 package com.qa.koel;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -22,7 +23,7 @@ public class BaseTest {
     WebDriverWait wait;
     Actions action;
     String playListName;
-
+    String randomName = UUID.randomUUID().toString();
  @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
@@ -52,19 +53,6 @@ public class BaseTest {
     @AfterMethod
     public void closeDriver() {
         driver.quit();
-    }
-
-
-    public void createPlaylist(String name){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@title='Create a new playlist']")));
-        WebElement create = getDriver().findElement(By.xpath("//i[@title='Create a new playlist']"));
-        action.click(create).perform();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[text()='New Playlist']")));
-        getDriver().findElement(By.xpath("//li[text()='New Playlist']")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@name='create-simple-playlist-form']/input")));
-        getDriver().findElement(By.xpath("//form[@name='create-simple-playlist-form']/input")).sendKeys(name, Keys.ENTER);
     }
 
 

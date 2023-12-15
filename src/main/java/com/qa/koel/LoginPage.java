@@ -5,14 +5,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public static By EMAIL_FIELD = By.xpath("//input[@type='email']");
-    public static By PASSWORD_FIELD = By.xpath("//input[@type='password']");
-    public static By LOGIN_BUTTON = By.xpath("//button[@type='submit']");
+    final static By EMAIL_FIELD = By.xpath("//input[@type='email']");
+    final static By PASSWORD_FIELD = By.xpath("//input[@type='password']");
+    final static By LOGIN_BUTTON = By.xpath("//button[@type='submit']");
+    final static By REGISTRATION_BUTTON = By.xpath("//a[contains(text(), 'Registration')]");
+
+
+    public WebElement getLoginButton() {
+        return pageDriver.findElement(LOGIN_BUTTON);
+    }
+
+    public WebElement getRegistrationButton() {
+        return pageDriver.findElement(REGISTRATION_BUTTON);
+    }
 
 
     public void logIn(String email, String password) {
@@ -23,4 +33,6 @@ public class LoginPage extends BasePage{
         WebElement logInButton = pageDriver.findElement(LOGIN_BUTTON);
         logInButton.click();
     }
+
+
 }
