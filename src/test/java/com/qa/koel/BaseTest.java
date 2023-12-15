@@ -54,14 +54,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void logIn(String email, String password) {
-        WebElement emailField = getDriver().findElement(By.xpath("//input[@type='email']"));
-        emailField.sendKeys(email);
-        WebElement passwordField = getDriver().findElement(By.xpath("//input[@type='password']"));
-        passwordField.sendKeys(password);
-        WebElement logInButton = getDriver().findElement(By.xpath("//button[@type='submit']"));
-        logInButton.click();
-    }
+
     public void createPlaylist(String name){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@title='Create a new playlist']")));
         WebElement create = getDriver().findElement(By.xpath("//i[@title='Create a new playlist']"));

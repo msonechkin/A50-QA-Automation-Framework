@@ -10,7 +10,8 @@ public class HomeWork19 extends BaseTest {
 
     @Test
     public void deletePlaylist() {
-        logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist(playListName);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), '" + playListName + "')]")));

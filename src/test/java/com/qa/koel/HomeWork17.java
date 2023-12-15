@@ -7,13 +7,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class HomeWork17 extends BaseTest {
     @Test
     public void addSongToPlaylist() {
-
-        logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist(playListName);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'All Songs')]")));

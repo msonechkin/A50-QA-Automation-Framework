@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 public class HomeWork18 extends BaseTest{
     @Test
     public void playSong(){
-        logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'All Songs')]")));
         getDriver().findElement(By.xpath("//a[contains(text(), 'All Songs')]")).click();

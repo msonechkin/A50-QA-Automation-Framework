@@ -14,7 +14,8 @@ public class HomeWork21 extends BaseTest {
 
     @Test
     public void renamePlaylist(){
-        logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist(playListName);
         WebElement playList = getDriver().findElement(By.xpath("//a[contains(text(), '" + playListName + "')]"));
         action.contextClick(playList).perform();
