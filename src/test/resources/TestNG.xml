@@ -5,13 +5,13 @@
 <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false" thread-count="2" parallel="false">
         <classes>
-            <class name="LoginTests"/>
-            <class name="BaseTest"/>
-            <class name="HomeWork16"/>
-            <class name="HomeWork17"/>
-            <class name="HomeWork18"/>
-            <class name="HomeWork19"/>
-            <class name="HomeWork21"/>
+            <class name="com.qa.koel.LoginTests"/>
+            <class name="com.qa.koel.BaseTest"/>
+            <class name="com.qa.koel.HomeWork16"/>
+            <class name="com.qa.koel.HomeWork17"/>
+            <class name="com.qa.koel.HomeWork18"/>
+            <class name="com.qa.koel.HomeWork19"/>
+            <class name="com.qa.koel.HomeWork21"/>
         </classes>
     </test>
 </suite>
