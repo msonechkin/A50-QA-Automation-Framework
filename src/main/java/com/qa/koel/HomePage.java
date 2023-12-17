@@ -18,6 +18,7 @@ public class HomePage extends BasePage {
     static final By ALL_SONGS = By.xpath("//a[contains(text(), 'All Songs')]");
     static final By PLAYLIST_SONECHKIN = By.xpath("//a[contains(text(), 'sonechkin')]");
     static final By ADD_TO_PLAYLIST_SONECHKIN = By.xpath("//li[contains(text(),sonechkin) and @class='playlist']");
+    static final By PLAYLIST_SONECHKIN2 = By.xpath("//a[contains(text(), 'sonechkin2')]");
 
     static final By LAMENT_SONG_TITLE = By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]");
     static final By CURRENT_PLAYING_SONG_TITLE = By.xpath("//h3");
@@ -46,8 +47,11 @@ public class HomePage extends BasePage {
     public WebElement getPlaylistSonechkin() {
         return pageDriver.findElement(PLAYLIST_SONECHKIN);
     }
-    public WebElement getADdToPlaylistSonechkin() {
+    public WebElement getAddToPlaylistSonechkin() {
         return pageDriver.findElement(ADD_TO_PLAYLIST_SONECHKIN);
+    }
+    public WebElement getPlaylistSonechkin2() {
+        return pageDriver.findElement(PLAYLIST_SONECHKIN2);
     }
 
 

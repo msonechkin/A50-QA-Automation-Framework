@@ -16,7 +16,6 @@ import java.util.UUID;
 
 public class BaseTest {
     private WebDriver driver;
-    WebDriverWait explicitWait;
     Actions action;
 
     @BeforeSuite
@@ -35,7 +34,6 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(BaseURL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(6));
         action = new Actions(driver);
 
     }

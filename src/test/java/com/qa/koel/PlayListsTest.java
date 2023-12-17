@@ -1,12 +1,9 @@
 package com.qa.koel;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
-
 
 import static org.testng.Assert.assertEquals;
 
@@ -15,16 +12,17 @@ public class PlayListsTest extends BaseTest {
     LoginPage loginPage;
     AllSongsPage allSongsPage;
 
-    public void createPlaylist(String name){
+    public void createPlaylist(String name) {
         homePage = new HomePage(getDriver());
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@title='Create a new playlist']")));
+        homePage.waitUntilElementToBeClickable(homePage.getPlaylistCreateButton(), 6);
         action.click(homePage.getPlaylistCreateButton()).perform();
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='New Playlist']")));
+        homePage.waitUntilElementToBeClickable(homePage.getNewPlaylistButton(), 6);
         homePage.getNewPlaylistButton().click();
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@name='create-simple-playlist-form']/input")));
+        homePage.waitUntilElementToBeClickable(homePage.getCreatePlaylistField(), 6);
         homePage.getCreatePlaylistField().sendKeys(name, Keys.ENTER);
     }
-    public boolean isPlaylistPresent() {
+
+    public boolean isPlaylistSonechkinPresent() {
         try {
             WebElement playlist = homePage.getPlaylistSonechkin();
             return playlist.isDisplayed();
@@ -39,49 +37,42 @@ public class PlayListsTest extends BaseTest {
         homePage = new HomePage(getDriver());
 
         loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
-
         createPlaylist("sonechkin");
 
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='del btn-delete-playlist']")));
+        homePage.waitUntilVisibilityOfElement(homePage.getDeletePlaylistButton(), 6);
         homePage.getDeletePlaylistButton().click();
+        homePage.waitUntilInvisibilityOfElement(homePage.getPlaylistSonechkin(), 6);
 
-        explicitWait.until(ExpectedConditions.invisibilityOf(homePage.getPlaylistSonechkin()));
-        isPlaylistPresent();
+        isPlaylistSonechkinPresent();
 
     }
+
     @Test
     public void renamePlaylist() {
         loginPage = new LoginPage(getDriver());
         homePage = new HomePage(getDriver());
         loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
-
         createPlaylist("sonechkin");
 
-        WebElement playList = homePage.getPlaylistSonechkin();
-        action.contextClick(playList).perform();
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Edit')]")));
+        homePage.waitUntilElementToBeClickable(homePage.getPlaylistSonechkin(),6);
+        action.contextClick(homePage.getPlaylistSonechkin()).perform();
+        homePage.waitUntilVisibilityOfElement(homePage.getEditPlaylistButton(), 6);
         homePage.getEditPlaylistButton().click();
-
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@data-testid='inline-playlist-name-input']")));
+        homePage.waitUntilElementToBeClickable(homePage.getRenamePlaylistField(), 6);
         action.moveToElement(homePage.getRenamePlaylistField());
 
         for (int i = 0; i < "sonechkin".length(); i++) {
             homePage.getRenamePlaylistField().sendKeys(Keys.BACK_SPACE);
         }
+
         homePage.getRenamePlaylistField().sendKeys("sonechkin2", Keys.ENTER);
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'sonechkin2')]")));
+        homePage.waitUntilVisibilityOfElement(homePage.getPlaylistSonechkin2(), 6);
         homePage.getPlaylistSonechkin().click();
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='del btn-delete-playlist']")));
+        homePage.waitUntilVisibilityOfElement(homePage.getDeletePlaylistButton(), 6);
         homePage.getDeletePlaylistButton().click();
 
-        explicitWait.until(ExpectedConditions.invisibilityOf(homePage.getPlaylistSonechkin()));
-        isPlaylistPresent();
-
-
     }
+
     @Test
     public void addSongToPlaylist() {
 
@@ -92,27 +83,23 @@ public class PlayListsTest extends BaseTest {
         loginPage.logIn("andrii.banak@testpro.io", "OknwxILOM2B3$");
         createPlaylist("sonechkin");
 
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'All Songs')]")));
+        homePage.waitUntilElementToBeClickable(homePage.getAllSongsButton(), 6);
         action.click(homePage.getAllSongsButton()).perform();
-
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(text(), 'Lament')]")));
+        allSongsPage.waitUntilElementToBeClickable(allSongsPage.getLamentSong(), 6);
         allSongsPage.getLamentSong().click();
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-add-to")));
+        allSongsPage.waitUntilVisibilityOfElement(allSongsPage.getAddToButton(), 6);
         allSongsPage.getAddToButton().click();
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'sonechkin')]")));
-        homePage.getADdToPlaylistSonechkin().click();
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'sonechkin')]")));
+        homePage.waitUntilVisibilityOfElement(homePage.getAddToPlaylistSonechkin(), 6);
+        homePage.getAddToPlaylistSonechkin().click();
+        homePage.waitUntilVisibilityOfElement(homePage.getPlaylistSonechkin(), 6);
         action.click(homePage.getPlaylistSonechkin()).perform();
+        homePage.waitUntilVisibilityOfElement(homePage.getLamentSongTitle(), 6);
 
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")));
         assertEquals((homePage.getLamentSongTitle()).getText(), "Lament");
 
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='del btn-delete-playlist']")));
+        homePage.waitUntilVisibilityOfElement(homePage.getDeletePlaylistButton(), 6);
         homePage.getDeletePlaylistButton().click();
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='ok']")));
+        homePage.waitUntilVisibilityOfElement(homePage.getDeletePlaylistOKButton(), 6);
         homePage.getDeletePlaylistOKButton().click();
 
     }
