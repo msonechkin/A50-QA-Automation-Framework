@@ -5,7 +5,7 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false" thread-count="2" parallel="false">
         <classes>
-            <class name="HomeWork16">
+            <class name="com.qa.koel.HomeWork16">
                 <methods>
                     <include name="registrationNavigation" />
                 </methods>
