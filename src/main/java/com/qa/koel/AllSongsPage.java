@@ -11,7 +11,7 @@ public class AllSongsPage extends BasePage{
 
     static final By LAMENT_SONG = By.xpath("//td[contains(text(), 'Lament')]");
     static final By ADD_TO_BUTTON = By.cssSelector(".btn-add-to");
-    static final By ADD_TO_OLOLO_PLAYLIST = By.xpath("//li[contains(text(), 'ololo')]");
+
 
 
 
@@ -21,8 +21,6 @@ public class AllSongsPage extends BasePage{
     public WebElement getAddToButton(){
         return pageDriver.findElement(ADD_TO_BUTTON);
     }
-    public WebElement getAddToOloloPlaylist(){
-        return pageDriver.findElement(ADD_TO_OLOLO_PLAYLIST);
-    }
+
 
 }

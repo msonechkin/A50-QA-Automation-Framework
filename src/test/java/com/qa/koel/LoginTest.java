@@ -3,7 +3,7 @@ package com.qa.koel;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+@Test
 public class LoginTest extends BaseTest {
     LoginPage loginPage;
     @Test
