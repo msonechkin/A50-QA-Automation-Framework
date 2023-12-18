@@ -3,6 +3,7 @@ package com.qa.koel;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -15,7 +16,7 @@ public class PlayListsTest extends BaseTest {
     public void createPlaylist(String name) {
         homePage = new HomePage(getDriver());
         homePage.waitUntilElementToBeClickable(homePage.getPlaylistCreateButton(), 6);
-        action.click(homePage.getPlaylistCreateButton()).perform();
+        action.click(homePage.getPlaylistCreateButton()).build().perform();
         homePage.waitUntilElementToBeClickable(homePage.getNewPlaylistButton(), 6);
         homePage.getNewPlaylistButton().click();
         homePage.waitUntilElementToBeClickable(homePage.getCreatePlaylistField(), 6);
@@ -43,7 +44,7 @@ public class PlayListsTest extends BaseTest {
         homePage.getDeletePlaylistButton().click();
         homePage.waitUntilInvisibilityOfElement(homePage.getPlaylistSonechkin(), 6);
 
-        isPlaylistSonechkinPresent();
+        Assert.assertFalse(isPlaylistSonechkinPresent());
 
     }
 
