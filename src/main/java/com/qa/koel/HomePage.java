@@ -1,82 +1,91 @@
 package com.qa.koel;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.UUID;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-
-    static final By CREATE_PLAYLIST_BUTTON = By.xpath("//i[@title='Create a new playlist']");
-    static final By NEW_PLAYLIST_BUTTON = By.xpath("//li[text()='New Playlist']");
-    static final By CREATE_PLAYLIST_FIELD = By.xpath("//form[@name='create-simple-playlist-form']/input");
-    static final By ALL_SONGS = By.xpath("//a[contains(text(), 'All Songs')]");
-    static final By PLAYLIST_SONECHKIN = By.xpath("//a[contains(text(), 'sonechkin')]");
-    static final By ADD_TO_PLAYLIST_SONECHKIN = By.xpath("//li[contains(text(),sonechkin) and @class='playlist']");
-    static final By PLAYLIST_SONECHKIN2 = By.xpath("//a[contains(text(), 'sonechkin2')]");
-
-    static final By LAMENT_SONG_TITLE = By.xpath("//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]");
-    static final By CURRENT_PLAYING_SONG_TITLE = By.xpath("//h3");
-    static final By DELETE_PLAYLIST_BUTTON = By.xpath("//button[@class='del btn-delete-playlist']");
-    static final By DELETE_PLAYLIST_OK_BUTTON = By.xpath("//button[@class='ok']");
-    static final By EDIT_PLAYLIST_BUTTON = By.xpath("//li[contains(text(), 'Edit')]");
-    static final By RENAME_PLAYLIST_FIELD = By.xpath("//input[@data-testid='inline-playlist-name-input']");
-
+    @FindBy(xpath = "//i[@title='Create a new playlist']")
+    WebElement createPlaylistButton;
+    @FindBy(xpath = "//li[text()='New Playlist']")
+    WebElement newPlaylistButton;
+    @FindBy(xpath = "//form[@name='create-simple-playlist-form']/input")
+    WebElement createPlaylistField;
+    @FindBy(xpath = "//a[contains(text(), 'All Songs')]")
+    WebElement allSongs;
+    @FindBy(xpath = "//a[contains(text(), 'sonechkin')]")
+    WebElement playlistSonechkin;
+    @FindBy(xpath = "//li[contains(text(),sonechkin) and @class='playlist']")
+    WebElement addToPlaylistSonechkin;
+    @FindBy(xpath = "//a[contains(text(), 'sonechkin2')]")
+    WebElement playlistSonechkin2;
+    @FindBy(xpath = "//section[@id='playlistWrapper']//td[contains(text(), 'Lament')]")
+    WebElement lamentSongTitle;
+    @FindBy(xpath = "//h3")
+    WebElement currentPlayingSongTitle;
+    @FindBy(xpath = "//button[@class='del btn-delete-playlist']")
+    WebElement deletePlaylistButton;
+    @FindBy(xpath = "//button[@class='ok']")
+    WebElement deletePlaylistOkButton;
+    @FindBy(xpath = "//li[contains(text(), 'Edit')]")
+    WebElement editPlaylistButton;
+    @FindBy(xpath = "//input[@data-testid='inline-playlist-name-input']")
+    WebElement renamePlaylistField;
 
     public WebElement getPlaylistCreateButton() {
-        return pageDriver.findElement(CREATE_PLAYLIST_BUTTON);
+        return createPlaylistButton;
     }
 
     public WebElement getNewPlaylistButton() {
-        return pageDriver.findElement(NEW_PLAYLIST_BUTTON);
+        return newPlaylistButton;
     }
 
     public WebElement getCreatePlaylistField() {
-        return pageDriver.findElement(CREATE_PLAYLIST_FIELD);
+        return createPlaylistField;
     }
 
     public WebElement getAllSongsButton() {
-        return pageDriver.findElement(ALL_SONGS);
+        return allSongs;
     }
 
     public WebElement getPlaylistSonechkin() {
-        return pageDriver.findElement(PLAYLIST_SONECHKIN);
+        return playlistSonechkin;
     }
+
     public WebElement getAddToPlaylistSonechkin() {
-        return pageDriver.findElement(ADD_TO_PLAYLIST_SONECHKIN);
+        return addToPlaylistSonechkin;
     }
+
     public WebElement getPlaylistSonechkin2() {
-        return pageDriver.findElement(PLAYLIST_SONECHKIN2);
+        return playlistSonechkin2;
     }
-
-
 
     public WebElement getLamentSongTitle() {
-        return pageDriver.findElement(LAMENT_SONG_TITLE);
+        return lamentSongTitle;
     }
 
     public WebElement getCurrentPlayingSongTitle() {
-        return pageDriver.findElement(CURRENT_PLAYING_SONG_TITLE);
+        return currentPlayingSongTitle;
     }
 
     public WebElement getDeletePlaylistButton() {
-        return pageDriver.findElement(DELETE_PLAYLIST_BUTTON);
+        return deletePlaylistButton;
     }
+
     public WebElement getDeletePlaylistOKButton() {
-        return pageDriver.findElement(DELETE_PLAYLIST_OK_BUTTON);
+        return deletePlaylistOkButton;
     }
 
     public WebElement getEditPlaylistButton() {
-        return pageDriver.findElement(EDIT_PLAYLIST_BUTTON);
+        return editPlaylistButton;
     }
 
     public WebElement getRenamePlaylistField() {
-        return pageDriver.findElement(RENAME_PLAYLIST_FIELD);
-}
+        return renamePlaylistField;
+    }
 
 }
