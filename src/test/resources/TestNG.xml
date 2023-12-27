@@ -5,9 +5,10 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false" thread-count="2" parallel="true">
         <classes>
-            <class name="com.qa.koel.LoginTest"/>
-            <class name="com.qa.koel.PlayListsTest"/>
-            <class name="com.qa.koel.HomeTest"/>
+<!--            <class name="com.qa.koel.LoginTest"/>-->
+<!--            <class name="com.qa.koel.PlayListsTest"/>-->
+<!--            <class name="com.qa.koel.HomeTest"/>-->
+            <class name="com.qa.koel.stepdefenition.LoginStepDefenition"/>
         </classes>
     </test>
 </suite>

@@ -35,6 +35,9 @@ public class HomePage extends BasePage {
     WebElement editPlaylistButton;
     @FindBy(xpath = "//input[@data-testid='inline-playlist-name-input']")
     WebElement renamePlaylistField;
+    @FindBy(xpath = "//a[@data-testid='btn-logout']")
+    WebElement logOutButton;
+
 
     public WebElement getPlaylistCreateButton() {
         return createPlaylistButton;
@@ -86,6 +89,9 @@ public class HomePage extends BasePage {
 
     public WebElement getRenamePlaylistField() {
         return renamePlaylistField;
+    }
+    public WebElement getLogOutButton() {
+        return logOutButton;
     }
 
 }
