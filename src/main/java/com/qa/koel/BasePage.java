@@ -17,15 +17,15 @@ public class BasePage {
         PageFactory.initElements(pageDriver,this);
     }
 
-    void waitUntilInvisibilityOfElement(WebElement element, int timeout){
+    public void waitUntilInvisibilityOfElement(WebElement element, int timeout){
         wait = new WebDriverWait(pageDriver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
-    void waitUntilVisibilityOfElement(WebElement element, int timeout){
+    public void waitUntilVisibilityOfElement(WebElement element, int timeout){
         wait = new WebDriverWait(pageDriver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    void waitUntilElementToBeClickable(WebElement element, int timeout){
+    public void waitUntilElementToBeClickable(WebElement element, int timeout){
         wait = new WebDriverWait(pageDriver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
