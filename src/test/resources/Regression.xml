@@ -5,9 +5,19 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false" thread-count="2" parallel="false">
         <classes>
-            <class name="com.qa.koel.HomeWork16">
+
+            <class name="com.qa.koel.LoginTest">
                 <methods>
                     <include name="registrationNavigation" />
+                    <include name="loginEmptyEmailPassword" />
+                </methods>
+            </class>
+
+            <class name="com.qa.koel.PlayListsTest">
+                <methods>
+                    <include name="deletePlaylist" />
+                    <include name="renamePlaylist" />
+                    <include name="addSongToPlaylist" />
                 </methods>
             </class>
 

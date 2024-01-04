@@ -21,8 +21,8 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        if (project.hasProperty('regression')) { suites "src/test/resources/Regression.xml" }
+        if (project.hasProperty('smoke')) { suites "src/test/resources/Smoke.xml" }
         systemProperty "browserName", System.getProperty("browserName")
-
     }
 }

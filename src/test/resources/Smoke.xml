@@ -5,11 +5,25 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false" thread-count="2" parallel="false">
         <classes>
-            <class name="com.qa.koel.AllSongsTest">
+
+            <class name="com.qa.koel.HomeTest">
                 <methods>
-                    <include name="addSongToPlaylist" />
+                    <include name="playSong" />
                 </methods>
             </class>
+
+            <class name="com.qa.koel.LoginTest">
+                <methods>
+                    <include name="registrationNavigation" />
+                </methods>
+            </class>
+
+            <class name="com.qa.koel.PlayListsTest">
+                <methods>
+                    <include name="deletePlaylist" />
+                </methods>
+            </class>
+
         </classes>
     </test>
 </suite>
