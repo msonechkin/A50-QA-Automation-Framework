@@ -28,3 +28,5 @@ test {
         systemProperty "browserName", System.getProperty("browserName")
     }
 }
+
+//gradle clean test -D browserName=chrome -P smoke
