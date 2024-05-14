@@ -20,7 +20,7 @@ import java.net.URI;
 import java.time.Duration;
 import java.util.HashMap;
 
-public class BaseTest {
+public abstract class BaseTest {
     private WebDriver driver;
     private static final ThreadLocal<WebDriver> THREAD_LOCAL = new ThreadLocal<>();
     Actions action;

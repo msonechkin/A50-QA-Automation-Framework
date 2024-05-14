@@ -1,5 +1,6 @@
 package com.qa.koel;
 
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,8 +23,7 @@ public class HomeTest extends BaseTest {
         homePage.waitUntilVisibilityOfElement(homePage.getCurrentPlayingSongTitle(), 6);
 
         Assert.assertEquals(homePage.getCurrentPlayingSongTitle().getText(), "Lament");
-
-
+        
     }
 
 }
